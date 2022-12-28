@@ -1,14 +1,14 @@
 <template>
-  <v-container fluid fill-height class="pa-12">
+  <v-container fill-height fluid justify-space-between>
     <div class="video-background"></div>
     
     <v-row class="text-left">
-      <v-col cols="12 ml-12 pl-12" dark>
-        <h1 class="typed-out white--text" style="font-size:10vw"> Out of time </h1>
-        <h2 class="typed-out-2 white--text" style="font-size:4vw"> How we have changed the world? </h2>
+      <v-col cols="12" dark>
+        <h1 class="typed-out white--text text-center" style="font-size:10vw"> Out of time </h1>
+        <h2 class="typed-out-2 white--text text-center" style="font-size:4vw"> How we have changed the world? </h2>
       </v-col>
     </v-row>
-    <v-row class="text-center">
+    <v-row class="text-center mt-16">
       <v-col>
         <v-btn class="mx-2 fade-in" fab @click="changeToCharts">
           <v-icon x-large dark color="secondary">
@@ -36,22 +36,22 @@
 .typed-out {
   overflow: hidden;
   white-space: nowrap;
-  width: 0;
+  opacity: 0;
   animation:
-    typing 2s steps(20, end) forwards
+    fadeIn 1s 1s forwards;
 }
 
 .typed-out-2 {
   overflow: hidden;
   white-space: nowrap;
-  width: 0;
-  animation:
-    typing 2s steps(20, end) 2s forwards
+
+  opacity: 0;
+  animation: fadeIn 1s 3s forwards;
 }
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn 1s 4s forwards;
+  animation: fadeIn 1s 5s forwards;
 }
 
 @keyframes typing {
@@ -76,8 +76,7 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
   height: 100vh;
-  filter: blur(14px);
-  transform: scale(1.1); 
+  filter: blur(14px); 
 }
 
 .col {
