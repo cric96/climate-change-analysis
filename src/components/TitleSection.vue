@@ -10,7 +10,7 @@
     </v-row>
     <v-row class="text-center">
       <v-col>
-        <v-btn class="mx-2" fab @click="changeToCharts">
+        <v-btn class="mx-2 fade-in" fab @click="changeToCharts">
           <v-icon x-large dark color="secondary">
             mdi-chevron-down
           </v-icon>
@@ -40,6 +40,7 @@
   animation:
     typing 2s steps(20, end) forwards
 }
+
 .typed-out-2 {
   overflow: hidden;
   white-space: nowrap;
@@ -47,16 +48,21 @@
   animation:
     typing 2s steps(20, end) 2s forwards
 }
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s 4s forwards;
+}
+
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
 }
 
-@keyframes blink {
-  from { border-color: transparent }
-  to { border-color: orange; }
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
-
 
 .video-background {
   position:absolute;
