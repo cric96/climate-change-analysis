@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-12">
+  <v-container fluid fill-height class="pa-12">
     <div class="video-background"></div>
     
     <v-row class="text-left">
@@ -76,7 +76,8 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
   height: 100vh;
-  filter: blur(0px);
+  filter: blur(14px);
+  transform: scale(1.1); 
 }
 
 .col {
