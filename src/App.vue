@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="background-color: gray">
     <v-main>
       <transition name="slide-fade" mode="out-in">
         <KeepAlive>

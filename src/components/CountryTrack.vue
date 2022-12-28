@@ -42,11 +42,19 @@ export default {
                 display: true
               },
               min: this.country.minumumTemperature -1,
-              max: this.country.maximumTemperature + 1
+              max: this.country.maximumTemperature + 1,
+              title: {
+                display: true,
+                text: "Temperature (°C)"
+              }
             },
             x:{
               grid: {
                 display: true
+              },
+              title: {
+                display: true,
+                text: "Year"
               }
             },
           },

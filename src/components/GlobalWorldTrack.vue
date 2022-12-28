@@ -1,5 +1,5 @@
 <template>
-  <ChoroplethChart :chartData="worldTemperatureData" :options="geoChartOption"/>
+  <ChoroplethChart :chartData="worldTemperatureData" :options="geoChartOption" ref="chart"/>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ import { topojson } from "chartjs-chart-geo"
 import { convertCountryName } from '@/js/CountryNameAdapter'
 import * as topojsonSimplify from "topojson-simplify"
 const semplified_geometry = topojsonSimplify.simplify(topojsonSimplify.presimplify(worldPosition), 0.9)
-
+const debouncing = 500
 export default {
   name: "GlobalWorldTrack",
   components: { ChoroplethChart },
@@ -18,7 +18,30 @@ export default {
   data () {
     return {
       countries: topojson.feature(semplified_geometry, worldPosition.objects.countries).features,
+      width: 0,
+      height: 0,
+      timeout: null
     }
+  },
+  mounted() {
+    let vm = this
+    function adjustSize() {
+      if(vm.timeout) { clearTimeout(vm.timeout) }
+      vm.timeout = setTimeout(() => {
+        try {
+          vm.width = vm.$refs.chart.$el.offsetWidth
+          vm.height = vm.$refs.chart.$el.offsetHeight
+        } catch(e) {
+          // Bouncing resize event 
+          console.warn("Debounce effect due to resize event")
+        }
+      }, debouncing)
+    }
+    window.addEventListener('resize', adjustSize);
+    adjustSize()
+  },
+  unmounted() {
+    window.removeEventListener('resize');
   },
   computed: {
     selectedDataYear() { return this.temperatureSeries.temperature[this.year] },
@@ -50,7 +73,24 @@ export default {
           legend: {
             display: false,
           },
+          annotation: {
+            annotations: {
+              label1: {
+                type: 'label',
+                xAdjust: this.width / 2 - 110,
+                yAdjust: this.height / 2 - 90,
+                color: "white",
+                textAlign: "left",
+                backgroundColor: 'rgba(0,0,0, 0)',
+                content: ['Temperature (°C)'],  
+                font: {
+                  size: 24
+                }
+              }
+            }
+          }
         },
+        legend: { display: false, align: "left" },
         scales: {
           xy: {
             projection: 'geoNaturalEarth1',
@@ -58,10 +98,17 @@ export default {
           color: {
             min: 0,
             max: 30,
+            quantize: 0,
             interpolate: "ylOrRd",
-            missing: "white"
+            missing: "white",
+            legend: {
+              position: 'bottom-right',
+              align: 'top',
+              length: 0.1,
+              indicatorWidth: 20,
+            }
           },
-          legend: { display: false, }
+          legend: { display: false, align: "left" }
         },
       }
     }
@@ -71,6 +118,6 @@ export default {
 </script>
 <style>
 canvas[id^="choropleth-chart"] {
-  height: 40vh !important;
+  height: 37vh !important;
 }
 </style>
