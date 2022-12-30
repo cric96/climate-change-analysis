@@ -46,13 +46,13 @@
   white-space: nowrap;
 
   opacity: 0;
-  animation: fadeIn 1s 3s forwards;
+  animation: fadeIn 1s 2s forwards;
 }
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn 1s 5s forwards;
-}
+  animation: fadeIn 1s 3s forwards;
+} 
 
 @keyframes typing {
   from { width: 0 }

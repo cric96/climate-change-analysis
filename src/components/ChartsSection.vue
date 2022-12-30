@@ -1,40 +1,13 @@
 <template>
   <v-container fluid class="pt-8 px-8">
-    <v-row class="halfpage">
-      <v-col col-6>
-        <v-card class="col-12" dark>
-          <v-card-title color="primary" class="mb-4">
-            <h1 class="text-center text-lg-h3 text-h4 w-100 text-uppercase">Average temperature map</h1> 
-            <h2 class="text-center text-lg-h4 text-headline w-100 font-weight-black">Year: <span :class=level>{{year}}</span></h2>
-          </v-card-title>
-          <GlobalWorldTrack :temperatureSeries="temperatureSeries" v-model="selectedCountryName" :year="year"/>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-row class="text-center">
-      <v-col cols="12" md="6">
-        <v-card class="col-12" dark>
-          <v-card-title class="text-center mb-4">
-            <h1 class="text-center text-lg-h3 text-h4  w-100 text-uppercase">Average temperature</h1>
-            <h2 class="text-center text-lg-h4 text-headline text-h4 w-100 font-weight-black">Country: <span class="font-weight-bold">{{selectedCountryName}}</span></h2>
-          </v-card-title>
-          <CountryTrack :country="selectedCountry" :year="year" :maxYear="temperatureSeries.maxYear" :minYear="temperatureSeries.minYear"/>
-        </v-card>
-      </v-col>
-      <v-col cols="12" md="6">
-        <v-card class="col-12" dark>
-          <v-card-title class="mb-4">
-            <h1 class="text-center text-lg-h3 text-h4  w-100 text-uppercase">Rank Temperature Increase</h1>
-            <h2 class="text-center text-lg-h4 text-headline text-h4 w-100 font-weight-black">Worst ten</h2>
-          </v-card-title>
-          <RankTrack :year="year"/>
-        </v-card>
-      </v-col>
-      
-    </v-row>
     <v-row>
-      <v-col col-12>
-        <v-card class="col-12" dark>
+      <v-col cols="12" md="4">
+        <v-card class="col-12" dark height="78px">
+          <h2 class="text-center text-md-h3 text-h3 w-100 font-weight-black">Year: <span :class=level>{{year}}</span></h2>
+        </v-card>
+      </v-col>
+      <v-col cols="12" md="8">
+        <v-card class="col-12 py-5" dark height="78px">
           <v-slider
               hide-details
               dark
@@ -44,6 +17,37 @@
               :prepend-icon="this.icon"
               @click:prepend="simulate"
           ></v-slider>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row class="halfpage">
+      <v-col col-6>
+        <v-card class="col-12" height="" dark>
+          <v-card-title color="primary" class="mb-4">
+            <h1 class="text-center text-xl-h3 text-h4 w-100 text-uppercase">Average temperature map</h1> 
+            <h2 class="text-center text-xl-h4 text-headline text-h4 w-100 font-weight-black" style="color: #1e1e1e">.</h2>
+          </v-card-title>
+          <GlobalWorldTrack :temperatureSeries="temperatureSeries" v-model="selectedCountryName" :year="year"/>
+        </v-card>
+      </v-col>
+      <v-col cols="12" lg="6">
+        <v-card class="col-12" height="" dark>
+          <v-card-title class="mb-4">
+            <h1 class="text-center text-xl-h3 text-h4  w-100 text-uppercase">Temperature Increase Rank </h1>
+            <h2 class="text-center text-xl-h4 text-headline text-h4 w-100 font-weight-black">The Hottest Countries</h2>
+          </v-card-title>
+          <RankTrack :year="year"/>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row class="text-center">
+      <v-col cols="12" lg="12">
+        <v-card class="col-12" dark>
+          <v-card-title class="text-center mb-4">
+            <h1 class="text-center text-xl-h3 text-h4  w-100 text-uppercase">Average temperature</h1>
+            <h2 class="text-center text-xl-h4 text-headline text-h4 w-100 font-weight-black">Country: <span class="font-weight-bold">{{selectedCountryName}}</span></h2>
+          </v-card-title>
+          <CountryTrack :country="selectedCountry" :year="year" :maxYear="temperatureSeries.maxYear" :minYear="temperatureSeries.minYear"/>
         </v-card>
       </v-col>
     </v-row>

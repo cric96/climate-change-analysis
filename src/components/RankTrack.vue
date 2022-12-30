@@ -27,6 +27,7 @@ export default {
     },
     barChartOptions() {
       return {
+        maintainAspectRatio: true,
         responsive: true,
         indexAxis: 'y',
         plugins: {
