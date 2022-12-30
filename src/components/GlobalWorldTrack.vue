@@ -116,8 +116,3 @@ export default {
 }
 
 </script>
-<style>
-/*canvas[id^="choropleth-chart"] {
-  height: 480px !important;
-}*/
-</style>

@@ -22,7 +22,7 @@
     </v-row>
     <v-row class="halfpage">
       <v-col col-6>
-        <v-card class="col-12" height="" dark>
+        <v-card class="col-12" dark>
           <v-card-title color="primary" class="mb-4">
             <h1 class="text-center text-xl-h3 text-h4 w-100 text-uppercase">Average temperature map</h1> 
             <h2 class="text-center text-xl-h4 text-headline text-h4 w-100 font-weight-black" style="color: #1e1e1e">.</h2>
@@ -31,7 +31,7 @@
         </v-card>
       </v-col>
       <v-col cols="12" lg="6">
-        <v-card class="col-12" height="" dark>
+        <v-card class="col-12" dark>
           <v-card-title class="mb-4">
             <h1 class="text-center text-xl-h3 text-h4  w-100 text-uppercase">Temperature Increase Rank </h1>
             <h2 class="text-center text-xl-h4 text-headline text-h4 w-100 font-weight-black">The Hottest Countries</h2>
